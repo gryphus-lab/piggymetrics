@@ -7,8 +7,8 @@ import com.piggymetrics.notification.domain.NotificationSettings;
 import com.piggymetrics.notification.domain.NotificationType;
 import com.piggymetrics.notification.domain.Recipient;
 import com.piggymetrics.notification.repository.RecipientRepository;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 
@@ -29,7 +29,7 @@ public class RecipientServiceImplTest {
 	@Mock
 	private RecipientRepository repository;
 
-	@Before
+	@BeforeEach
 	public void setup() {
 		initMocks(this);
 	}
@@ -45,12 +45,12 @@ public class RecipientServiceImplTest {
 		assertEquals(recipient, found);
 	}
 
-	@Test(expected = IllegalArgumentException.class)
+	@org.junit.jupiter.api.Test(expected = IllegalArgumentException.class)
 	public void shouldFailToFindRecipientWhenAccountNameIsEmpty() {
 		recipientService.findByAccountName("");
 	}
 
-	@Test
+	@org.junit.jupiter.api.Test
 	public void shouldSaveRecipient() {
 
 		NotificationSettings remind = new NotificationSettings();
@@ -77,7 +77,7 @@ public class RecipientServiceImplTest {
 		assertEquals("test", saved.getAccountName());
 	}
 
-	@Test
+	@org.junit.jupiter.api.Test
 	public void shouldFindReadyToNotifyWhenNotificationTypeIsBackup() {
 		final List<Recipient> recipients = ImmutableList.of(new Recipient());
 		when(repository.findReadyForBackup()).thenReturn(recipients);
@@ -86,7 +86,7 @@ public class RecipientServiceImplTest {
 		assertEquals(recipients, found);
 	}
 
-	@Test
+	@org.junit.jupiter.api.Test
 	public void shouldFindReadyToNotifyWhenNotificationTypeIsRemind() {
 		final List<Recipient> recipients = ImmutableList.of(new Recipient());
 		when(repository.findReadyForRemind()).thenReturn(recipients);
@@ -95,7 +95,7 @@ public class RecipientServiceImplTest {
 		assertEquals(recipients, found);
 	}
 
-	@Test
+	@org.junit.jupiter.api.Test
 	public void shouldMarkAsNotified() {
 
 		NotificationSettings remind = new NotificationSettings();

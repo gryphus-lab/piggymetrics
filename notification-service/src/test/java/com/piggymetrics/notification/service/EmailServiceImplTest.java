@@ -2,8 +2,11 @@ package com.piggymetrics.notification.service;
 
 import com.piggymetrics.notification.domain.NotificationType;
 import com.piggymetrics.notification.domain.Recipient;
-import org.junit.Before;
-import org.junit.Test;
+import jakarta.mail.MessagingException;
+import jakarta.mail.Session;
+import jakarta.mail.internet.MimeMessage;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentCaptor;
 import org.mockito.Captor;
 import org.mockito.InjectMocks;
@@ -11,9 +14,6 @@ import org.mockito.Mock;
 import org.springframework.core.env.Environment;
 import org.springframework.mail.javamail.JavaMailSender;
 
-import javax.mail.MessagingException;
-import javax.mail.Session;
-import javax.mail.internet.MimeMessage;
 import java.io.IOException;
 import java.util.Properties;
 
@@ -36,14 +36,14 @@ public class EmailServiceImplTest {
 	@Captor
 	private ArgumentCaptor<MimeMessage> captor;
 
-	@Before
+	@BeforeEach
 	public void setup() {
 		initMocks(this);
 		when(mailSender.createMimeMessage())
 				.thenReturn(new MimeMessage(Session.getDefaultInstance(new Properties())));
 	}
 
-	@Test
+	@org.junit.jupiter.api.Test
 	public void shouldSendBackupEmail() throws MessagingException, IOException {
 
 		final String subject = "subject";

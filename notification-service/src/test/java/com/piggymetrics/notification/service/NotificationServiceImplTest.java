@@ -4,12 +4,12 @@ import com.google.common.collect.ImmutableList;
 import com.piggymetrics.notification.client.AccountServiceClient;
 import com.piggymetrics.notification.domain.NotificationType;
 import com.piggymetrics.notification.domain.Recipient;
-import org.junit.Before;
-import org.junit.Test;
+import jakarta.mail.MessagingException;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 
-import javax.mail.MessagingException;
 import java.io.IOException;
 
 import static org.mockito.Mockito.*;
@@ -29,7 +29,7 @@ public class NotificationServiceImplTest {
 	@Mock
 	private EmailService emailService;
 
-	@Before
+	@BeforeEach
 	public void setup() {
 		initMocks(this);
 	}
@@ -60,7 +60,7 @@ public class NotificationServiceImplTest {
 		verify(recipientService, never()).markNotified(NotificationType.BACKUP, withError);
 	}
 
-	@Test
+	@org.junit.jupiter.api.Test
 	public void shouldSendRemindNotificationsEvenWhenErrorsOccursForSomeRecipients() throws IOException, MessagingException, InterruptedException {
 
 		final String attachment = "json";

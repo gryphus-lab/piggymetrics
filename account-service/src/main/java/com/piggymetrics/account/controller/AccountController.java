@@ -3,11 +3,11 @@ package com.piggymetrics.account.controller;
 import com.piggymetrics.account.domain.Account;
 import com.piggymetrics.account.domain.User;
 import com.piggymetrics.account.service.AccountService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
 import java.security.Principal;
 
 @RestController

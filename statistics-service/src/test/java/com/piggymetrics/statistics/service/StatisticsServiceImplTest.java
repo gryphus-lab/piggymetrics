@@ -2,17 +2,13 @@ package com.piggymetrics.statistics.service;
 
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
-import com.piggymetrics.statistics.domain.Account;
-import com.piggymetrics.statistics.domain.Currency;
-import com.piggymetrics.statistics.domain.Item;
-import com.piggymetrics.statistics.domain.Saving;
-import com.piggymetrics.statistics.domain.TimePeriod;
+import com.piggymetrics.statistics.domain.*;
 import com.piggymetrics.statistics.domain.timeseries.DataPoint;
 import com.piggymetrics.statistics.domain.timeseries.ItemMetric;
 import com.piggymetrics.statistics.domain.timeseries.StatisticMetric;
 import com.piggymetrics.statistics.repository.DataPointRepository;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 
@@ -27,10 +23,7 @@ import java.util.Map;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import static org.mockito.AdditionalAnswers.returnsFirstArg;
-import static org.mockito.Mockito.any;
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 import static org.mockito.MockitoAnnotations.initMocks;
 
 public class StatisticsServiceImplTest {
@@ -44,7 +37,7 @@ public class StatisticsServiceImplTest {
 	@Mock
 	private DataPointRepository repository;
 
-	@Before
+	@BeforeEach
 	public void setup() {
 		initMocks(this);
 	}
@@ -63,12 +56,12 @@ public class StatisticsServiceImplTest {
 		statisticsService.findByAccountName(null);
 	}
 
-	@Test(expected = IllegalArgumentException.class)
+	@org.junit.jupiter.api.Test(expected = IllegalArgumentException.class)
 	public void shouldFailToFindDataPointWhenAccountNameIsEmpty() {
 		statisticsService.findByAccountName("");
 	}
 
-	@Test
+	@org.junit.jupiter.api.Test
 	public void shouldSaveDataPoint() {
 
 		/**

@@ -1,10 +1,10 @@
 package com.piggymetrics.statistics.domain;
 
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotNull;
 import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @Document(collection = "accounts")

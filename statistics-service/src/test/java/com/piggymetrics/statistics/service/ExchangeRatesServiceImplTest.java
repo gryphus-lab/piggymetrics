@@ -4,8 +4,8 @@ import com.google.common.collect.ImmutableMap;
 import com.piggymetrics.statistics.client.ExchangeRatesClient;
 import com.piggymetrics.statistics.domain.Currency;
 import com.piggymetrics.statistics.domain.ExchangeRatesContainer;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 
@@ -25,12 +25,12 @@ public class ExchangeRatesServiceImplTest {
 	@Mock
 	private ExchangeRatesClient client;
 
-	@Before
+	@BeforeEach
 	public void setup() {
 		initMocks(this);
 	}
 
-	@Test
+	@org.junit.jupiter.api.Test
 	public void shouldReturnCurrentRatesWhenContainerIsEmptySoFar() {
 
 		ExchangeRatesContainer container = new ExchangeRatesContainer();
@@ -88,7 +88,7 @@ public class ExchangeRatesServiceImplTest {
 		assertTrue(expectedConvertionResult.compareTo(result) == 0);
 	}
 
-	@Test(expected = IllegalArgumentException.class)
+	@org.junit.jupiter.api.Test(expected = IllegalArgumentException.class)
 	public void shouldFailToConvertWhenAmountIsNull() {
 		ratesService.convert(Currency.EUR, Currency.RUB, null);
 	}

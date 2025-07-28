@@ -5,14 +5,12 @@ import com.google.common.collect.ImmutableList;
 import com.piggymetrics.account.domain.*;
 import com.piggymetrics.account.service.AccountService;
 import com.sun.security.auth.UserPrincipal;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
-import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
@@ -25,7 +23,6 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@RunWith(SpringRunner.class)
 @SpringBootTest
 public class AccountControllerTest {
 
@@ -39,7 +36,7 @@ public class AccountControllerTest {
 
 	private MockMvc mockMvc;
 
-	@Before
+	@BeforeEach
 	public void setup() {
 		initMocks(this);
 		this.mockMvc = MockMvcBuilders.standaloneSetup(accountController).build();
@@ -58,7 +55,7 @@ public class AccountControllerTest {
 				.andExpect(status().isOk());
 	}
 
-	@Test
+	@org.junit.jupiter.api.Test
 	public void shouldGetCurrentAccount() throws Exception {
 
 		final Account account = new Account();
@@ -109,7 +106,7 @@ public class AccountControllerTest {
 				.andExpect(status().isOk());
 	}
 
-	@Test
+	@org.junit.jupiter.api.Test
 	public void shouldFailOnValidationTryingToSaveCurrentAccount() throws Exception {
 
 		final Account account = new Account();
@@ -134,7 +131,7 @@ public class AccountControllerTest {
 				.andExpect(status().isOk());
 	}
 
-	@Test
+	@org.junit.jupiter.api.Test
 	public void shouldFailOnValidationTryingToRegisterNewAccount() throws Exception {
 
 		final User user = new User();
