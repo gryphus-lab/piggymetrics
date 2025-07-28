@@ -18,7 +18,7 @@ services:
   auth-service:
     build: auth-service
     ports:
-      - 5000:5000
+      - 5100:5100
 
   auth-mongodb:
     build: mongodb
@@ -38,7 +38,7 @@ services:
   statistics-service:
     build: statistics-service
     ports:
-      - 7000:7000
+      - 7100:7100
 
   statistics-mongodb:
     build: mongodb

@@ -3,7 +3,7 @@ security:
     client:
       clientId: statistics-service
       clientSecret: ${STATISTICS_SERVICE_PASSWORD}
-      accessTokenUri: http://auth-service:5000/uaa/oauth/token
+      accessTokenUri: http://auth-service:5100/uaa/oauth/token
       grant-type: client_credentials
       scope: server
 
@@ -19,7 +19,7 @@ spring:
 server:
   servlet:
     context-path: /statistics
-  port: 7000
+  port: 7100
 
 rates:
   url: https://api.exchangeratesapi.io
