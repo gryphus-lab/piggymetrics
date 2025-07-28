@@ -32,12 +32,6 @@
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
-	<dependencies>
-		<dependency>
-			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-starter</artifactId>
-		</dependency>
-	</dependencies>
 	<modules>
 		<module>config</module>
 		<module>monitoring</module>
