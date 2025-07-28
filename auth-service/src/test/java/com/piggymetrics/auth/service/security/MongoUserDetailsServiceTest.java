@@ -7,10 +7,12 @@ import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 import static org.mockito.MockitoAnnotations.initMocks;
@@ -28,7 +30,7 @@ public class MongoUserDetailsServiceTest {
 		initMocks(this);
 	}
 
-	@org.junit.jupiter.api.Test
+	@Test
 	public void shouldLoadByUsernameWhenUserExists() {
 
 		final User user = new User();
@@ -41,6 +43,6 @@ public class MongoUserDetailsServiceTest {
 
 	@Test
 	public void shouldFailToLoadByUsernameWhenUserNotExists() {
-		service.loadUserByUsername("name");
+		assertThrows(UsernameNotFoundException.class, () -> service.loadUserByUsername("name"));
 	}
 }

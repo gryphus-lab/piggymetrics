@@ -1,7 +1,8 @@
 package com.piggymetrics.account.domain;
 
-import jakarta.validation.constraints.NotNull;
 import org.hibernate.validator.constraints.Length;
+
+import javax.validation.constraints.NotNull;
 
 public class User {
 
