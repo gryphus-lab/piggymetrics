@@ -1,13 +1,11 @@
 spring:
+  config:
+    import: "optional:configserver:"
   main:
     allow-bean-definition-overriding: true
   mongodb:
     embedded:
       version: 4.0.2
-  cloud:
-    config:
-      import-check:
-        enabled: false
   data:
     mongodb:
       database: piggymetrics
