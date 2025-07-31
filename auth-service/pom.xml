@@ -86,10 +86,12 @@
 					<finalName>auth-service</finalName>
 				</configuration>
 			</plugin>
+			<!-- JaCoCo plugin temporarily disabled - incompatible with Java 24 -->
+			<!--
 			<plugin>
 				<groupId>org.jacoco</groupId>
 				<artifactId>jacoco-maven-plugin</artifactId>
-				<version>0.8.11</version>
+				<version>0.8.12</version>
 				<executions>
 					<execution>
 						<goals>
@@ -105,6 +107,7 @@
 					</execution>
 				</executions>
 			</plugin>
+			-->
 		</plugins>
 	</build>
 </project>
