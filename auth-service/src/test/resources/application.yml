@@ -1,4 +1,9 @@
 spring:
+  mongodb:
+    embedded:
+      version: 4.0.2
+  config:
+    import: "optional:configserver:"
   data:
     mongodb:
       database: piggymetrics
