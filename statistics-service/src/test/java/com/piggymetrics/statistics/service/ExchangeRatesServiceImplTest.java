@@ -12,8 +12,7 @@ import org.mockito.Mock;
 import java.math.BigDecimal;
 import java.util.Map;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 import static org.mockito.MockitoAnnotations.initMocks;
 
@@ -85,11 +84,12 @@ public class ExchangeRatesServiceImplTest {
 
 		BigDecimal result = ratesService.convert(Currency.RUB, Currency.USD, amount);
 
-		assertTrue(expectedConvertionResult.compareTo(result) == 0);
+        assertEquals(0, expectedConvertionResult.compareTo(result));
 	}
 
-	@org.junit.jupiter.api.Test(expected = IllegalArgumentException.class)
+	@Test
 	public void shouldFailToConvertWhenAmountIsNull() {
-		ratesService.convert(Currency.EUR, Currency.RUB, null);
+		assertThrows(IllegalArgumentException.class, () ->
+				ratesService.convert(Currency.EUR, Currency.RUB, null));
 	}
 }

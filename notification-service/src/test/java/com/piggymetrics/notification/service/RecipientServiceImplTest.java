@@ -15,8 +15,7 @@ import org.mockito.Mock;
 import java.util.Date;
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 import static org.mockito.MockitoAnnotations.initMocks;
@@ -45,12 +44,13 @@ public class RecipientServiceImplTest {
 		assertEquals(recipient, found);
 	}
 
-	@org.junit.jupiter.api.Test(expected = IllegalArgumentException.class)
+	@Test
 	public void shouldFailToFindRecipientWhenAccountNameIsEmpty() {
-		recipientService.findByAccountName("");
+		assertThrows(IllegalArgumentException.class, () ->
+				recipientService.findByAccountName(""));
 	}
 
-	@org.junit.jupiter.api.Test
+	@Test
 	public void shouldSaveRecipient() {
 
 		NotificationSettings remind = new NotificationSettings();

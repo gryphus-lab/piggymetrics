@@ -13,7 +13,7 @@ import org.springframework.boot.test.autoconfigure.data.mongo.DataMongoTest;
 import java.util.Date;
 import java.util.List;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 
 @DataMongoTest

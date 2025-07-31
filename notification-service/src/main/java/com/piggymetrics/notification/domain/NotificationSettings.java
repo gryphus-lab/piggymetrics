@@ -1,7 +1,6 @@
 package com.piggymetrics.notification.domain;
 
-import jakarta.validation.constraints.NotNull;
-
+import javax.validation.constraints.NotNull;
 import java.util.Date;
 
 public class NotificationSettings {
