@@ -13,24 +13,24 @@ import java.util.Optional;
 @Service
 public class UserServiceImpl implements UserService {
 
-	private final Logger log = LoggerFactory.getLogger(getClass());
+    private static final BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+    private final Logger log = LoggerFactory.getLogger(getClass());
+    @Autowired
+    private UserRepository repository;
 
-	private static final BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+    @Override
+    public void create(User user) {
 
-	@Autowired
-	private UserRepository repository;
+        Optional<User> existing = repository.findById(user.getUsername());
+        existing.ifPresent(it -> {
+            throw new IllegalArgumentException("user already exists: " + it.getUsername());
+        });
 
-	@Override
-	public void create(User user) {
+        String hash = encoder.encode(user.getPassword());
+        user.setPassword(hash);
 
-		Optional<User> existing = repository.findById(user.getUsername());
-		existing.ifPresent(it-> {throw new IllegalArgumentException("user already exists: " + it.getUsername());});
+        repository.save(user);
 
-		String hash = encoder.encode(user.getPassword());
-		user.setPassword(hash);
-
-		repository.save(user);
-
-		log.info("new user has been created: {}", user.getUsername());
-	}
+        log.info("new user has been created: {}", user.getUsername());
+    }
 }

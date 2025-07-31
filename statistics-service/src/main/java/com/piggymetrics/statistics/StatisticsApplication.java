@@ -21,17 +21,17 @@ import java.util.Arrays;
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class StatisticsApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(StatisticsApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(StatisticsApplication.class, args);
+    }
 
-	@Configuration
-	static class CustomConversionsConfig {
+    @Configuration
+    static class CustomConversionsConfig {
 
-		@Bean
-		public CustomConversions customConversions() {
-			return new CustomConversions(Arrays.asList(new DataPointIdReaderConverter(),
-					new DataPointIdWriterConverter()));
-		}
-	}
+        @Bean
+        public CustomConversions customConversions() {
+            return new CustomConversions(Arrays.asList(new DataPointIdReaderConverter(),
+                    new DataPointIdWriterConverter()));
+        }
+    }
 }

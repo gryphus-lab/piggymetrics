@@ -7,6 +7,6 @@ import java.io.IOException;
 
 public interface EmailService {
 
-	void send(NotificationType type, Recipient recipient, String attachment) throws IOException, javax.mail.MessagingException;
+    void send(NotificationType type, Recipient recipient, String attachment) throws IOException, javax.mail.MessagingException;
 
 }

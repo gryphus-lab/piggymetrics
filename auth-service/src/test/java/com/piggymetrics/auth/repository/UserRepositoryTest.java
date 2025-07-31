@@ -14,20 +14,20 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 @DataMongoTest
 public class UserRepositoryTest {
 
-	@Autowired
-	private UserRepository repository;
+    @Autowired
+    private UserRepository repository;
 
-	@Test
-	public void shouldSaveAndFindUserByName() {
+    @Test
+    public void shouldSaveAndFindUserByName() {
 
-		User user = new User();
-		user.setUsername("name");
-		user.setPassword("password");
-		repository.save(user);
+        User user = new User();
+        user.setUsername("name");
+        user.setPassword("password");
+        repository.save(user);
 
-		Optional<User> found = repository.findById(user.getUsername());
-		assertTrue(found.isPresent());
-		assertEquals(user.getUsername(), found.get().getUsername());
-		assertEquals(user.getPassword(), found.get().getPassword());
-	}
+        Optional<User> found = repository.findById(user.getUsername());
+        assertTrue(found.isPresent());
+        assertEquals(user.getUsername(), found.get().getUsername());
+        assertEquals(user.getPassword(), found.get().getPassword());
+    }
 }
